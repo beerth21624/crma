@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button, createTheme, ThemeProvider } from '@mui/material';
-
+import { Link } from 'react-router-dom';
 const theme = createTheme({
   palette: {
     primary: {
@@ -12,6 +12,7 @@ const theme = createTheme({
     },
   },
 });
+
 const RootPage = styled.div`
   display: flex;
   flex-direction: row;
@@ -65,28 +66,51 @@ const Navbar = () => {
   return (
     <ThemeProvider theme={theme}>
       <RootPage>
+        <Link to="/" className="link">
+          <LogoBox>
+            <Logo src="/images/logo.png" alt="" />
+
+            <TitleBox>
+              <Title>ส่วนบริการ</Title>
+              <Title>โรงเรียนนายร้อยพระจุลจอมเกล้า</Title>
+            </TitleBox>
+          </LogoBox>
+        </Link>
         <LogoBox>
-          <Logo src="/images/logo.png" alt="" />
-          <TitleBox>
-            <Title>ส่วนบริการ</Title>
-            <Title>โรงเรียนนายร้อยพระจุลจอมเกล้า</Title>
-          </TitleBox>
-        </LogoBox>
-        <LogoBox>
-          <Button style={{ height: '40px', width: '120px' }} variant="outlined">
-            ลงทะเบียน
-          </Button>
-          <Button style={{ height: '40px', width: '120px' }} variant="outlined">
-            เข้าสู่ระบบ
-          </Button>
+          <Link to="/register" className="link">
+            <Button
+              style={{ height: '40px', width: '120px' }}
+              variant="outlined"
+            >
+              ลงทะเบียน
+            </Button>
+          </Link>
+          <Link to="/login" className="link">
+            <Button
+              style={{ height: '40px', width: '120px' }}
+              variant="outlined"
+            >
+              เข้าสู่ระบบ
+            </Button>
+          </Link>
         </LogoBox>
       </RootPage>
       <BoxBar>
-        <MenuTitle>หน้าแรก</MenuTitle>
-        <MenuTitle>ผู้บังคับบัญชา</MenuTitle>
-        <MenuTitle>โครงสร้าง</MenuTitle>
-        <MenuTitle>ดาวน์โหลด</MenuTitle>
-        <MenuTitle>ติดต่อเรา</MenuTitle>
+        <Link to="/" className="link">
+          <MenuTitle>หน้าแรก</MenuTitle>
+        </Link>
+        <Link to="/boss" className="link">
+          <MenuTitle>ผู้บริหาร</MenuTitle>
+        </Link>
+        <Link to="/history" className="link">
+          <MenuTitle>ประวัติหน่วย</MenuTitle>
+        </Link>
+        <Link to="/document" className="link">
+          <MenuTitle>ดาวน์โหลด</MenuTitle>
+        </Link>
+        <Link to="/contact" className="link">
+          <MenuTitle>ติดต่อเรา</MenuTitle>
+        </Link>
       </BoxBar>
     </ThemeProvider>
   );

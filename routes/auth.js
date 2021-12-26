@@ -1,8 +1,8 @@
 const User = require('../models/User');
-const express = require('express');
-const router = express.Router();
+const { Router } = require('express');
 
-exports.register = async (req, res) => {
+const register = async (req, res) => {
+  console.log('user', req.body);
   const { username, email, password } = req.body;
 
   const validateUser = await User.findOne({ email });
@@ -23,7 +23,7 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -55,7 +55,8 @@ exports.login = async (req, res) => {
 };
 
 //router
-router.route('/register');
-router.route('/login');
+const router = Router();
+router.route('/register').post(register);
+router.route('/login').post(login);
 
 module.exports = router;

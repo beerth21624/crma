@@ -112,7 +112,8 @@ const Footer = () => {
         </DepartmentBox>
         <CopyBox>
           <Desc>
-            Copyright &copy; 2021, ส่วนบริการ โรงเรียนนายร้อยพระจุลจอมเกล้า
+            Copyright &copy; {new Date().getFullYear()}, ส่วนบริการ
+            โรงเรียนนายร้อยพระจุลจอมเกล้า
           </Desc>
           <Desc>Design By Ordnance</Desc>
         </CopyBox>
